@@ -1,0 +1,15 @@
+﻿@model FA.JustBlog.Core.Models.Tag
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+    @Html.Partial("_CreateOrEditPartial")
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

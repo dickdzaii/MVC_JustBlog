@@ -1,0 +1,7 @@
+﻿@using FA.JustBlog.CustomHelper
+@model IEnumerable<FA.JustBlog.Core.Models.Tag>
+<h3>Popular tags:</h3>
+@foreach (var tag in Model)
+{
+    <span style="background-color:#34cf6f;color:#fff !important;padding:2px;">@Html.TagLink(tag, null)</span>
+}

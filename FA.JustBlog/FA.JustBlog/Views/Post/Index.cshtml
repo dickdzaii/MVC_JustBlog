@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Models.Post>
+@using FA.JustBlog.CustomHelper
+@{
+    ViewBag.Title = ViewBag.DynamicTitle ?? "Just Blog!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.Heading</h1>
+<hr />
+@foreach (var post in Model)
+{
+    <div class="pt-md-3">
+        <h2>@Html.ActionLink(post.Title, "Details", "Post", new { year = post.PostedOn.Year, month = post.PostedOn.Month, title = post.UrlSlug }, new { @class = "nav-link" })</h2>
+        <span title="Posted at @(post.PostedOn.ToString("hh:mm tt dd-MM-yyyy"))">Posted on @Html.DisplayPostedDate(@post.PostedOn) with rate @post.Rate by @post.ViewCount view(s)</span>
+        <p>
+            Category: @Html.CategoryLink(post.Category, null)
+        </p>
+        <p>
+            Tag:
+            @foreach (var tag in post.Tags)
+            {
+                <span style="background-color:#34cf6f;color:#fff !important;padding:2px;">@Html.TagLink(tag, null)</span>
+            }
+        </p>
+        <p>
+            @post.ShortDescription
+        </p>
+        <hr />
+    </div>
+}

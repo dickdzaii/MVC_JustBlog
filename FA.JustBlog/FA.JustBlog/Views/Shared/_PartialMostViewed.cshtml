@@ -1,0 +1,6 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Models.Post>
+<h2>Most viewed</h2>
+@foreach (var post in Model)
+{
+    <p>@Html.ActionLink(post.Title, "Details", "Post", new { year = post.PostedOn.Year, month = post.PostedOn.Month, title = post.UrlSlug }, null)</p>
+}
